@@ -1,0 +1,399 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block body %}
+<body class="main-page pc">
+    <div class="tp-banner-container">
+      <div class="tp-banner">
+        <ul>
+          <li>
+            <img src="{% static 'c1.jpg' %}" style="height: 500px;" alt />
+            <div class="tp-caption sft sl-title" data-x="center" data-y="center" data-voffset="-90" data-speed="700" data-start="1700" data-easing="easeOutBack">splashes</div>
+            <p class="tp-caption sfb" data-x="center" data-y="center" data-voffset="40" data-speed="500" data-start="1900" data-easing="easeOutBack">crafted</p>
+          </li>
+          <li>
+            <div class="tp-caption sft customout tp-videolayer fullscreenvideo" data-x="center" data-hoffset="134" data-y="center" data-voffset="-6" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:5;scaleY:5;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="1000" data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power4.easeOut" data-videoposter="images/slider/second-slide.jpg" data-autoplay="false" data-autoplayonlyfirsttime="false" data-nextslideatend="false" data-ytid="Q-WuUHNIz8" data-videoattributes="enablejsapi=1&html5=1&hd=1&wmode=opaque&showinfo=0&rel=0&controls=0&disablekb=1&start=1380" data-videocontrols="false" style="z-index: 1"></div>
+            <div class="tp-caption sft sl-title" data-x="center" data-y="center" data-voffset="-90" data-speed="700" data-start="1700" data-easing="easeOutBack">simplicity</div>
+            <p class="tp-caption sfb" data-x="center" data-y="center" data-voffset="40" data-speed="500" data-start="1900" data-easing="easeOutBack">superb</p>
+          </li>
+          <li>
+            <img src="images/slider/third-slide.jpg" alt />
+            <div class="tp-caption sft sl-title" data-x="center" data-y="center" data-voffset="-90" data-speed="700" data-start="1700" data-easing="easeOutBack">square</div>
+            <p class="tp-caption sfb" data-x="center" data-y="center" data-voffset="40" data-speed="500" data-start="1900" data-easing="easeOutBack">pixels</p>
+          </li>
+        </ul>
+        <div class="scroll-down-button">
+          <img src="images/down-button.png" class="down-button" alt />
+          <i class="fa fa-angle-down"></i>
+        </div>
+      </div>
+    </div>
+    <!-- page header -->
+    {% include 'snippet/header.html' %}
+    <!-- / pade header -->
+    <section id="about" class="about-us padding-section">
+      <div class="grid-row">
+        <div class="grid-col-row clear">
+          <div class="grid-col grid-col-6 col-sd-12">
+            <!-- section title -->
+            <div class="title">
+              <span class="main-title">WHERE </span>
+              <span class="slash-icon">/<!-- <i class="fa fa-angle-double-right"></i> --></span><br/>
+              CREATIVITY <br/>MEETS STRATEGY!
+            </div>
+            <!-- section title -->
+            <dl>
+              <dt class="kunal-head">We Don’t Just Design—We Build Experiences!</dt>
+                <dd class="kunal-text" >At Vink Designs, we build digital experiences that captivate and convert. With 300+ successful projects, we help brands shine through smart marketing, bold design, and advanced tech.</dd>
+              <dt class="kunal-head" >We have 10+ Years of Experience </dt>
+                <dd class="kunal-text" >With over 10 years in the industry, we bring deep knowledge, proven methods, and a track record of consistent results.</dd>
+              <dt class="kunal-head" >10k+ Leads Generated</dt>
+                <dd class="kunal-text" >Successfully generated over 10,000 qualified leads through data-driven strategies, boosting conversion rates and client revenue.
+                </dd>
+            </dl>
+            
+            <div class="grid-row text-center" style="margin-top: 30px;">
+              <div class="button-container">
+                <a href="{% url 'home:contact' %}" class="button-kunal" style="position: relative; z-index: 9999; pointer-events: auto;" >Request A Quote</a>
+              </div>
+            </div>
+          </div>
+          <div class="grid-col grid-col-6 content-img col-sd-12">
+            <img class="ipad" src="{% static 'images/ipad.png' %}" alt>
+            <img id="splash-1" src="{% static 'vinkblue.png' %}" alt>
+            <img id="splash-2" src="{% static 'vinkgold-2.png' %}" alt>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      
+
+      <div class="grid-row clear services-section-content" style="position: relative; z-index: 2;">
+        <div class="title" style="text-align: center; margin-top: 50px;">
+            <span class="main-title" style="display: inline-block;">OUR PROCESSES</span>
+            <span class="slash-icon" style="display: inline-block; margin-left: 8px;">/</span><br/>
+            <span style="display: inline-block; margin-top: 10px;">HOW WE <br/>DO IT!</span>
+        </div>
+    
+        <div class="grid-row clear">
+          <div class="grid-col-row-kunal">
+            <div class="custom-card">
+              <div class="rectangle"><i class="fa fa-search"></i></div>
+              <h3>01. Discover & Analyze</h3>
+              <div class="line"></div>
+              <p>We research your market and brand needs, uncovering key insights to shape our strategy.</p>
+            </div>
+            <div class="custom-card">
+              <div class="rectangle"><i class="fa fa-sitemap"></i></div>
+              <h3>02. Strategy Development</h3>
+              <div class="line"></div>
+              <p>Using data-driven insights, we craft a tailored plan with clear tactical steps to achieve your goals.</p>
+            </div>
+            <div class="custom-card">
+              <div class="rectangle"><i class="fa fa-rocket"></i></div>
+              <h3>03. Launch & Execute</h3>
+              <div class="line"></div>
+              <p>With a solid strategy in place, we execute with precision, ensuring adaptability for real-time success.</p>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="text-section parallaxed">
+      <div class="parallax-image" data-parallax-left="0.5" data-parallax-top="0.3" data-parallax-scroll-speed="0.5">
+        <img src="{% static 'images/parallax-2.jpg' %}" alt="">
+      </div>
+      <div class="grid-row">
+        <div class="parallax-content-second">
+          <div class="grid-col-row clear">
+            <div class="grid-col grid-col-3">
+              <div class="counter-block">
+                <i class="fa fa-puzzle-piece"></i>
+                <div class="counter" data-count="675"></div>
+                <div class="counter-name">Creative Work</div>
+              </div>
+            </div>
+            <div class="grid-col grid-col-3">
+              <div class="counter-block">
+                <i class="fa fa-group"></i>
+                <div class="counter" data-count="945"></div>
+                <div class="counter-name">Satisfied Clients</div>
+              </div>							
+            </div>
+            <div class="grid-col grid-col-3">
+              <div class="counter-block">
+                <i class="fa fa-calendar"></i>
+                <div class="counter" data-count="756"></div>
+                <div class="counter-name">Working Days</div>
+              </div>
+            </div>
+            <div class="grid-col grid-col-3">
+              <div class="counter-block last">
+                <i class="fa fa-coffee"></i>
+                <div class="counter" data-count="859"></div>
+                <div class="counter-name">Cups Of Coffe</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <section id="portfolio" class="portfolio padding-section">
+      <div class="grid-row">
+        <div class="portfolio-filter clear">
+          <div class="title">
+            <a href="#" class="all-iso-item active" data-filter=".item">ALL</a>
+            <span class="main-title">PORTFOLIO</span>
+            <span class="slash-icon">/</span>
+            <a href="#" data-filter=".photo">PHOTGRAPHY</a>
+            <a href="#" data-filter=".design">DESIGN</a>
+            <a href="#" data-filter=".video">VIDEO</a>
+            <a href="#" data-filter=".web">WEB</a>
+            <a href="#" data-filter=".music">MUSIC</a>
+          </div>
+        </div>
+      </div>
+      <div class="isotope">
+        <div class="item design photo video web">
+          <div class="portfolio-hover">
+            <div class="portfolio-info">
+              <a href=""><div class="portfolio-title">Future timeline</div></a>
+              <div class="portfolio-divider"></div>
+              <div class="portfolio-description">Photography, Art</div>
+            </div>
+          </div>
+          <img src="{% static 'images/isotop/iso1.jpg' %}" alt />
+        </div>
+        <div class="item illust video">
+          <div class="portfolio-hover">
+            <div class="portfolio-info">
+              <a href=""><div class="portfolio-title">Sit Amet</div></a>
+              <div class="portfolio-divider"></div>
+              <div class="portfolio-description">Video, Art</div>
+            </div>
+          </div>
+          <img src="{% static 'images/isotop/iso3.jpg' %}" alt />
+        </div>
+        <div class="item design illust photo web">
+          <div class="portfolio-hover">
+            <div class="portfolio-info">
+              <a href=""><div class="portfolio-title">Sed Laoreete</div></a>
+              <div class="portfolio-divider"></div>
+              <div class="portfolio-description">Video, Photography</div>
+            </div>
+          </div>
+          <img src="{% static 'images/isotop/iso5.jpg' %}" alt />
+        </div>
+        <div class="item illust photo">
+          <div class="portfolio-hover">
+            <div class="portfolio-info">
+              <a href=""><div class="portfolio-title">Amet Interdum</div></a>
+              <div class="portfolio-divider"></div>
+              <div class="portfolio-description">Music, Art</div>
+            </div>
+          </div>
+          <img src="{% static 'images/isotop/iso8.jpg' %}" alt />
+        </div>
+        <div class="item design video web">
+          <div class="portfolio-hover">
+            <div class="portfolio-info">
+              <a href=""><div class="portfolio-title">Cras varius</div></a>
+              <div class="portfolio-divider"></div>
+              <div class="portfolio-description">Photography, Art</div>
+            </div>
+          </div>
+          <img src="{% static 'images/isotop/iso10.jpg' %}" alt />
+        </div>
+        <div class="item illust photo video">
+          <div class="portfolio-hover">
+            <div class="portfolio-info">
+              <a href=""><div class="portfolio-title">Maecenas Semper</div></a>
+              <div class="portfolio-divider"></div>
+              <div class="portfolio-description">Business, Art</div>
+            </div>
+          </div>
+          <img src="{% static 'images/isotop/iso2.jpg' %}" alt />
+        </div>
+        <div class="item illust video web music">
+          <div class="portfolio-hover">
+            <div class="portfolio-info">
+              <a href=""><div class="portfolio-title">Scelerisque Venen</div></a>
+              <div class="portfolio-divider"></div>
+              <div class="portfolio-description">Music, Art</div>
+            </div>
+          </div>
+          <img src="{% static 'images/isotop/iso6.jpg' %}" alt />
+        </div>
+        <div class="item design photo music">
+          <div class="portfolio-hover">
+            <div class="portfolio-info">
+              <a href=""><div class="portfolio-title">Libero Luctus</div></a>
+              <div class="portfolio-divider"></div>
+              <div class="portfolio-description">Music, Art</div>
+            </div>
+          </div>
+          <img src="{% static 'images/isotop/iso9.jpg' %}" alt />
+        </div>
+        <div class="item photo web music">
+          <div class="portfolio-hover">
+            <div class="portfolio-info">
+              <a href=""><div class="portfolio-title">Dlandit Cursus</div></a>
+              <div class="portfolio-divider"></div>
+              <div class="portfolio-description">Business, Art</div>
+            </div>
+          </div>
+          <img src="{% static 'images/isotop/iso4.jpg' %}" alt />
+        </div>
+        <div class="item photo video web music">
+          <div class="portfolio-hover">
+            <div class="portfolio-info">
+              <a href=""><div class="portfolio-title">Future timeline</div></a>
+              <div class="portfolio-divider"></div>
+              <div class="portfolio-description">Music, Photography</div>
+            </div>
+          </div>
+          <img src="{% static 'images/isotop/iso7.jpg' %}" alt />
+        </div>
+        <div class="item design video music">
+          <div class="portfolio-hover">
+            <div class="portfolio-info">
+              <a href=""><div class="portfolio-title">Sed Tempor</div></a>
+              <div class="portfolio-divider"></div>
+              <div class="portfolio-description">Business, Art</div>
+            </div>
+          </div>
+          <img src="{% static 'images/isotop/iso11.jpg' %}" alt />
+        </div>
+      </div>
+      <div class="grid-row text-center" style="margin-top: 30px;">
+        <div class="button-container">
+          <a href="{% url 'home:portfolio' %}" class="button-kunal">VIEW MORE</a>
+        </div>
+      </div>
+</section>
+      
+      <hr />
+    <section id="about" class="about-us padding-section">
+      
+      <div class="grid-row clear services-section-content" style="position: relative; z-index: 2;">
+        <div class="title" style="text-align: center; margin-top: 50px;">
+            <span class="main-title" style="display: inline-block;">OUR SERVICES</span>
+            <span class="slash-icon" style="display: inline-block; margin-left: 8px;">/</span><br/>
+            <span style="display: inline-block; margin-top: 10px;">INNOVATIVE <br/>SOLUTIONS!</span>
+        </div>
+    
+        <div class="grid-col-row">
+            {% for service in services %}
+            <a href="{% url 'home:service_detail' service.slug %}" class="button kunal-button">
+            <div class="item-example grid-col grid-col-3">
+              <div class="custom-card2">
+                  <div class="rectangle">
+                      <i class="fa {{ service.fa_icons }}"></i>
+                  </div>
+                  <h3>{{ service.h1 }}</h3>
+                  <div class="line"></div>
+                  <p>{{ service.description }}</p>
+                  <a href="{% url 'home:service_detail' service.slug %}" class="button kunal-button">/ Read More</a>
+              </div>
+            </a>
+          </div>
+          
+            {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- page content -->
+
+
+
+
+
+    {% comment %} <section id="blog" class="padding-section">
+      <div class="blog-head">
+        <div class="grid-row">
+          <div class="grid-col-row clear position">
+            <div class="grid-col">
+              <div class="title">
+                <span class="main-title">SERVICES</span>
+                <span class="slash-icon">/</span><br />
+                WHAT WE OFFER<br />/
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="blog-content">
+        <div class="grid-row">
+          <div class="blog">
+            {% for service in services %}
+            <div class="item clear">
+              <div class="date-round">
+                <div class="date-mounth">
+                  <span>22</span><p>Mar</p>
+                </div>
+              </div>
+              <div class="media-block {% cycle 'left-block' 'right-block' %}">
+                <img id="splash-4" src="{% static 'img/splash-4.png' %}" alt />
+                <div class="picture">
+                  <div class="hover-effect"></div>
+                  <div class="link-cont">
+                    <a href="#" class="cws-slide-left fa fa-share-alt" onclick="shareContent(event)"></a>
+                    <a href="#" class="cws-slide-right fa fa-heart heart-icon" onclick="toggleHeart(event)"></a>
+                  </div>
+                  <img src="{% static 'images/blog-image1.jpg' %}" alt />
+                  <div class="canvas">
+                    <div class="grad"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="item-header">
+                <h2>{{service.h1}}</h2>
+              </div>
+              <div class="content">
+                <p>{{service.content}}</p>
+              </div>
+              <div class="post-info clear">
+                <span><i class="fa fa-calendar"></i> March 22, 2016</span>
+                <span><i class="fa fa-edit"></i> Admin</span>
+                <a class="button" href="{% url 'home:service_detail' service.title %}">/ READ MORE</a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section> {% endcomment %}
+
+
+    <section id="innovation" class="innovation parallaxed">
+      <div class="parallax-image" data-parallax-left="0.5" data-parallax-top="0.3" data-parallax-scroll-speed="0.5">
+        <img src="{% static 'images/parallax-3.jpg' %}" alt="" />
+      </div>
+      <div class="grid-row">
+        <div class="parallax-content-third">
+          <div id="client-carousel" class="owl-carousel">
+            {% for testimonial in testimonials|slice:":3" %}
+            <div>
+              <p class="testimonial-title">TESTIMONIALS</p>
+              <div class="testimonial-separator"></div>
+              <p class="testimonial-text">“{{testimonial.testimonial}}”</p>
+              <p class="testimonial-author">- {{testimonial.name}}, {{testimonial.role}}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+    {% include 'snippet/cta.html' %}
+    <!-- / page content -->
+    <!-- page footer -->
+    {% include 'snippet/footer2.html' %}
+    <!-- / page footer -->
+{% endblock %}
+</body>

@@ -1,0 +1,44 @@
+{% load static %}
+<style>
+    .kunal{
+        height: 50px;
+    }
+</style>
+<header id="home">
+    <!-- sticky menu -->
+    <div class="stick-wrapper">
+        <div class="sticky clear">
+            <div class="grid-row">
+                <img class="splash" src="{% static 'img/splash.png' %}" alt="">
+                <div class="logo">
+                    <a href="index.html"><img class="kunal" src="{% static 'logo.png' %}" alt=""></a>
+                </div>
+                <nav class="nav">
+                    <a href="#" class="switcher">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <ul class="clear">
+                        <li><a href="{% url "home:index" %}" class="active-link">Home</a></li>
+                        <li><a href="{% url "home:about" %}">About</a></li>
+                        <li>
+                            <a href="{% url "home:portfolio" %}">Portfolio</a>
+                        </li>
+                        <li>
+                            <a href="{% url "blog:blog" %}">Blog</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{% url "home:service_list" %}">Services <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                {% for service in services %}
+                                <li><a href="{% url "home:service_detail" service.slug%}">{{service.h1}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li class="last"><a href="{% url "home:contact" %}">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!--/ sticky menu -->
+</header>

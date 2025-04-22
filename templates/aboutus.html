@@ -1,0 +1,226 @@
+{% extends 'base2.html' %}
+
+{% block body %}
+{% load static %}
+<body class="page-about pc">
+	<!-- page header -->
+	{% include 'snippet/header.html' %}
+	<!--/ page header  -->
+	<div class="top-bg">
+		
+    	<img src="{% static 'img/splash-top.png' %}" class="splash-top" alt>
+		<div class="page-title zoomIn animated">about us</div>
+	</div>
+	<section id="about" class="about-us">
+		<div class="grid-row">
+			<div class="grid-col-row clear kunal-left">
+				<div class="grid-col grid-col-6 col-sd-12">
+					<div class="title">
+						<span class="main-title">WHO WE ARE</span>
+						<span class="slash-icon">/<i class="fa fa-angle-double-right"></i></span><br/>
+						A MARKETING AGENCY
+					</div>
+					<dl>
+						<dt>Driven by Passion & Innovation</dt>
+							<dd>Vink Designs is a creative hub led by passionate innovators, delivering impactful marketing and design solutions globally.</dd>
+						<dt>Trusted by Top Brands Worldwide</dt>
+							<dd>With 300+ successful projects, we craft compelling brand stories that connect with audiences and elevate businesses.</dd>
+					</dl>
+				</div>
+				
+				<div class="grid-col grid-col-6 col-sd-12 fullwidth-img">
+					<img src="{% static 'images//about/ipad3.png' %}" alt>
+				</div>
+			</div>
+		</div>
+	<hr>
+		<div class="grid-row" style="margin-top: 50px;">
+			<div class="grid-col-row clear">
+				<div class="grid-col grid-col-6 col-sd-12">
+					<div class="title">
+						<span class="main-title">OUR VISION</span>
+						<span class="slash-icon">/<i class="fa fa-angle-double-right"></i></span>
+					</div>
+					<p>
+						At Vink Designs, we strive to lead the digital and creative industry by fostering innovation and creativity. Our goal is to help businesses connect with their audiences through compelling storytelling and impactful design. We transform visions into reality, ensuring every brand’s unique narrative stands out in a competitive market. By building long-term relationships and offering tailored solutions, we empower brands to reach their highest potential and leave a lasting mark in their industry.
+					</p>
+				</div>
+				
+				<div class="grid-col grid-col-6 col-sd-12">
+					<div class="title">
+						<span class="main-title">OUR MISSION</span>
+						<span class="slash-icon">/<i class="fa fa-angle-double-right"></i></span>
+					</div>
+					<p>
+						Our mission is to deliver exceptional digital and creative services that cater to the evolving needs of global businesses. We are committed to providing innovative, high-quality solutions that align with our clients' goals. Through strategic thinking, creative excellence, and dedication, we help brands grow and thrive. Guided by principles of honesty, integrity, and a commitment to excellence, we exceed expectations in every project. As your trusted partner in success, we create compelling narratives that drive impact and lasting growth.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- page content -->
+	 <hr>
+
+	
+	 <section id="about" class="about-us padding-section">
+      
+		<div class="grid-row clear services-section-content" style="position: relative; z-index: 2;">
+		  <div class="title" style="text-align: center; margin-top: 50px;">
+			  <span class="main-title" style="display: inline-block;">OUR SERVICES</span>
+			  <span class="slash-icon" style="display: inline-block; margin-left: 8px;">/</span><br/>
+			  <span style="display: inline-block; margin-top: 10px;">INNOVATIVE <br/>SOLUTIONS!</span>
+		  </div>
+	  
+		  <div class="grid-col-row">
+			  {% for service in services %}
+			  <a href="{% url 'home:service_detail' service.slug %}" class="button kunal-button">
+			  <div class="item-example grid-col grid-col-3">
+				<div class="custom-card2">
+					<div class="rectangle">
+						<i class="fa {{ service.fa_icons }}"></i>
+					</div>
+					<h3>{{ service.h1 }}</h3>
+					<div class="line"></div>
+					<p>{{ service.description }}</p>
+					<a href="{% url 'home:service_detail' service.slug %}" class="button kunal-button">/ Read More</a>
+				</div>
+			  </a>
+			</div>
+			
+			  {% endfor %}
+		  </div>
+		</div>
+	  </section>
+	
+	<section class="innovation parallaxed">
+		<div class="parallax-image" data-parallax-left="0.5" data-parallax-top="0.3" data-parallax-scroll-speed="0.5">
+			<img src="{% static 'images//about/parallax-about-2.jpg' %}" alt="">
+		</div>
+		<div class="grid-row">
+			<div class="parallax-content-third">
+				<div class="clear table">
+					<div class="grid-col-4 title-innovation">
+						<div class="innovation-header">our client & testimonial
+						<div class="slash-line"></div></div>
+					</div>
+					<div class="grid-col grid-col-8">
+						<div id="client-carousel" class="owl-carousel">
+							{% for group in testimonial_groups %}
+								<div>
+									{% for t in group %}
+										{% if t %}  {# Skip None if zip_longest used #}
+											<div class="client-item clear">
+												<div class="client-icon">
+													<div class="border-img">
+															<div class="window-tabs">
+																<div class="overflow-block"></div>
+																{% if t.image %}
+																<img src="{{ t.image.url }}" alt="{{ t.name }}">
+															{% else %}
+																<img src="{% static 'nopic.webp' %}" alt="{{ t.name }}">
+															{% endif %}
+															
+															</div>
+													</div>
+												</div>
+												<h3 class="header-header" >{{ t.name }}<span> - {{ t.role }}</span></h3>
+												<p>{{ t.testimonial }}</p>
+											</div>
+										{% endif %}
+									{% endfor %}
+								</div>
+							{% endfor %}
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="them-mask"></div>
+		<div class="background-color style-2"></div>
+	</section>
+	<section class="padding-section">
+		<div class="grid-row clear">
+			<div class="grid-col-row clear why-choose">
+				<div class="grid-col grid-col-6">
+					<div class="title">
+						<span class="main-title">WHY CHOOSE US?</span>
+						<span class="slash-icon">/<i class="fa fa-angle-double-right"></i></span>PREMIUM ONE PAGE THEMES
+					</div>
+					<dl>
+						<dt>Why Choose Vink?</dt>
+							<dd>
+								<strong>Expertise in Marketing:</strong> Vink Designs brings years of experience and specialized knowledge to craft effective marketing strategies that drive real results.<br><br>
+								<strong>Access to Advanced Tools & Resources:</strong> We leverage the latest cutting-edge marketing tools and technologies to optimize your campaigns for maximum efficiency and impact.<br><br>
+								<strong>Cost-Effective Solutions:</strong> Eliminate the expense of an in-house team while enjoying high-quality marketing services at competitive pricing.<br><br>
+								<strong>Creativity & Innovation:</strong> We specialize in innovative, attention-grabbing strategies that set your brand apart and keep your audience engaged.<br><br>
+								<strong>Time-Saving Efficiency:</strong> By managing all aspects of your marketing, we allow you to focus on growing your business, saving you time and resources.<br><br>
+								<strong>Consistent & Measurable Results:</strong> Our data-driven approach ensures reliable, trackable outcomes that contribute to long-term business success.
+							</dd>
+					</dl>
+					<a class="rectangle-button medium green margin-top" href="{% url "home:contact" %}">Lets Connect</a>
+				</div>
+				<div class="grid-col grid-col-6">
+					<ul class="skill-bar">
+						<!-- skill bar item -->
+						 {% for item in services %}
+						<li>
+							<div class="name">{{item.h1}}<span class="skill-bar-perc"></span></div>
+							<div class="bar ">
+								<span class="skill-bar-progress" data-value="{{item.bar_value}}" ></span>
+							</div>
+						</li>
+						{% endfor %}
+						<!--/skill bar item -->
+					</ul>
+					<!--/skill bar -->
+				</div>
+			</div>
+		</div>
+		<hr/>
+		<div class="grid-row">
+			<div class="related-projects">
+				<div class="title">
+					<span class="main-title">OUR BLOGS</span>
+					<span class="slash-icon">/<i class="fa fa-angle-double-right"></i></span>
+				</div>
+				<div class="grid-col-row">
+					<div id="project-carousel" class="owl-carousel">
+						{% for blog in blogs %}
+						<div class="grid-col grid-col-3">
+							<div class="little-about">
+								<div class="picture">
+									<div class="hover-effect"></div>
+									<div class="link-cont">
+										<a href="#" class="cws-slide-left fa fa-share-alt" onclick="shareContent(event)"></a>
+										<a href="#" class="cws-slide-right fa fa-heart heart-icon" data-blog-id="{{ blog.id }}" onclick="toggleHeart(event)"></a>
+									</div>
+									<img src="{{blog.image.url}}" alt="">
+								</div>
+								<h3>{{blog.h1}}</h3>
+								<p>{{blog.description}}</p>
+								<a class="button" href="{% url "blog:blog-single-post" blog.slug %}">/ MORE DETAILS</a>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="carousel-nav">
+					<div class="carousel-button">
+						<div class="prev"><i class="fa fa-chevron-left"></i></div>
+						<div class="next"><i class="fa fa-chevron-right"></i></div>
+					</div>
+					<div class="carousel-line"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	
+	<!--/ page content  -->
+	<!-- subscribe -->
+	{% include 'snippet/sub.html' %}
+	{% include 'snippet/footer2.html' %}
+	<!--/ subscribe  -->
+	{% endblock body %}
+	<!-- page footer -->

@@ -1,0 +1,179 @@
+{% load static %}
+
+
+<aside class="grid-col grid-col-3 sidebar">
+    <!-- widget search -->
+    <div id="search" class="widget widget_search">
+        <form method="get" class="search-form" action="http://wp.com/">
+            <label>
+                <span class="screen-reader-text">Search for:</span>
+                <input type="search" class="search-field" placeholder="Search …" value="" name="s" title="Search for:"></label>
+            <input type="submit" class="search-submit" value="Search">
+        </form>
+    </div>
+    <!-- widget search -->
+    <!-- follow widget -->
+    {% include 'snippet/follow_and_sub.html' %}
+    <!-- follow widget -->
+
+    <!-- categories widget -->
+    {% comment %} <div id="categories" class="widget widget_categories">
+        <div class="widget-title">Categories</div>
+        <ul>
+            <li class="cat-item cat-item-1 current-cat"><a href="#">Another Category</a> (1) </li>
+            <li class="cat-item cat-item-1 current-cat"><a href="#">Blogroll</a> (7) </li>
+            <li class="cat-item cat-item-1 current-cat"><a href="#">Community</a> (1) </li>
+            <li class="cat-item cat-item-1 current-cat"><a href="#">Daily</a> (2) </li>
+            <li class="cat-item cat-item-1 current-cat"><a href="#">Graphics</a> (2) </li>
+            <li class="cat-item cat-item-1 current-cat"><a href="#">Journal</a> (1) </li>
+            <li class="cat-item cat-item-1 current-cat"><a href="#">Photography</a> (1) </li>
+        </ul>
+    </div> {% endcomment %}
+    <!-- categories widget -->
+
+    <!-- recent comments widget -->
+    <div class="widget widget-recent-comments clear">
+        <div class="widget-title">Testimonials</div>
+        <div class="carousel-nav">
+            <div class="carousel-button">
+                <div class="prev"><i class="fa fa-chevron-left"></i></div>
+                <div class="next"><i class="fa fa-chevron-right"></i></div>
+            </div>
+        </div>
+        <div id="recent-comments" class="owl-carousel owl-widget">
+            {% for group in testimonial_groups %}
+                <ul>
+                    {% for testimonial in group %}
+                        <li>
+                            <p><strong>{{ testimonial.name }}</strong></p>
+                            {% comment %} <p><strong>{{ testimonial.name }}</strong> ({{ testimonial.role }})</p> {% endcomment %}
+                            <p>{{ testimonial.testimonial }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </div>
+        
+    </div>
+    <!-- recent comments widget -->
+    <hr class="divider-green">
+    <!-- text widget -->
+    <!-- gallery widget -->
+    <div class="widget widget-gallery">
+        <div class="widget-title">Mini Gallery</div>
+        <div class="carousel-nav">
+            <div class="carousel-button">
+                <div class="prev"><i class="fa fa-chevron-left"></i></div>
+                <div class="next"><i class="fa fa-chevron-right"></i></div>
+            </div>
+        </div>
+        <div id="carousel-gallery-widget" class="owl-carousel owl-widget">
+            <div class="item-gallery-image picture">
+                <div class="hover-effect"></div>
+                <div class="link-cont">
+                    <a href="#" class="cws-slide-left fancy fa fa-link"></a>
+                    {% comment %} <a href="{% static 'images/portfolio_three/four-columns-5@2x.jpg' %}" class="fancy fa fa-search"></a> {% endcomment %}
+                    <a href="#" class="cws-slide-right fa fa-heart"></a>
+                </div>
+                <img src="{% static 'images/portfolio_three/four-columns-5.jpg' %}" alt="">
+            </div>
+            <div class="item-gallery-image picture">
+                <div class="hover-effect"></div>
+                <div class="link-cont">
+                    <a href="#" class="cws-slide-left fancy fa fa-link"></a>
+                    <a href="{% static 'images/portfolio_three/four-columns-6@2x.jpg' %}" class="fancy fa fa-search"></a>
+                    <a href="#" class="cws-slide-right fa fa-heart"></a>
+                </div>
+                <img src="{% static 'images/portfolio_three/four-columns-6.jpg' %}" alt="">
+            </div>
+            <div class="item-gallery-image picture">
+                <div class="hover-effect"></div>
+                <div class="link-cont">
+                    <a href="#" class="cws-slide-left fancy fa fa-link"></a>
+                    <a href="{% static 'images/portfolio_three/four-columns-8@2x.jpg' %}" class="fancy fa fa-search"></a>
+                    <a href="#" class="cws-slide-right fa fa-heart"></a>
+                </div>
+                <img src="{% static 'images/portfolio_three/four-columns-8.jpg' %}" alt="">
+            </div>
+            <div class="item-gallery-image picture">
+                <div class="hover-effect"></div>
+                <div class="link-cont">
+                    <a href="#" class="cws-slide-left fancy fa fa-link"></a>
+                    <a href="{% static 'images/portfolio_three/four-columns-9@2x.jpg' %}" class="fancy fa fa-search"></a>
+                    <a href="#" class="cws-slide-right fa fa-heart"></a>
+                </div>
+                <img src="{% static 'images/portfolio_three/four-columns-9.jpg' %}" alt="">
+            </div>
+            <div class="item-gallery-image picture">
+                <div class="hover-effect"></div>
+                <div class="link-cont">
+                    <a href="#" class="cws-slide-left fancy fa fa-link"></a>
+                    <a href="{% static 'images/portfolio_three/four-columns-10@2x.jpg' %}" class="fancy fa fa-search"></a>
+                    <a href="#" class="cws-slide-right fa fa-heart"></a>
+                </div>
+                <img src="{% static 'images/portfolio_three/four-columns-10.jpg' %}" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- gallery widget -->
+    <!-- text widget -->
+    <hr class="divider-green">
+    <!-- recent post widget -->
+    <div class="widget widget-recent-posts">
+        <div class="widget-title">Recent Posts</div>
+        <div class="carousel-nav">
+            <div class="carousel-button">
+                <div class="prev"><i class="fa fa-chevron-left"></i></div>
+                <div class="next"><i class="fa fa-chevron-right"></i></div>
+            </div>
+        </div>
+        <div id="recent-posts-carousel" class="owl-carousel owl-widget">
+            {% for slide in recent_post_slides %}
+                <div>
+                    {% for post in slide %}
+                        <div class="recent-post-item clear">
+                            <div class="recent-post-icon">
+                                <div class="border-img">
+                                    <a href="{% url 'blog:blog-single-post' post.slug %}">
+                                        <div class="window-tabs">
+                                            <div class="overflow-block"></div>
+                                            <img src="{{ post.image.url }}" alt="{{ post.title }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <p>{{ post.title|truncatechars:50 }}</p>
+                            <p>{{ post.published|date:"d.m.Y" }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        <hr class="divider-green">
+    </div>
+    <!-- recent post widget -->
+    <!-- archives widget -->
+    {% comment %} <div id="archives" class="widget widget_archive">
+        <div class="widget-title">Archives</div>
+        <ul>
+            <li><a href="http://wp.com/?m=201612">July</a></li>
+            <li><a href="http://wp.com/?m=201612">August</a></li>
+            <li><a href="http://wp.com/?m=201612">September</a></li>
+            <li><a href="http://wp.com/?m=201612">October</a></li>
+            <li><a href="http://wp.com/?m=201612">November</a></li>
+            <li><a href="http://wp.com/?m=201612">December</a></li>
+        </ul>
+    </div> {% endcomment %}
+    <!-- archives widget -->
+
+    <!-- widget calendar -->
+    <!--/ widget calendar -->
+    <!-- meta widget -->
+    <!-- meta widget -->
+    <!-- widget twitter -->
+    <!--/ widget twitter -->
+    <!-- tags widget -->
+    <!-- tags widget -->
+    
+
+</aside>

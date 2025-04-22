@@ -1,0 +1,11 @@
+<div class="subscribe">
+    <div class="grid-row clear">
+        <div class="them-mask"></div>
+        <div class="subscribe-header">subscribe</div>
+        <form action="{% url "home:newsletter" %}" method="post" class="clear">
+            {% csrf_token %}
+            <input type="email" name="email" placeholder="Your Email Address" required>
+            <button type="submit" class="button-send">Send</button>
+        </form>
+    </div>
+</div>

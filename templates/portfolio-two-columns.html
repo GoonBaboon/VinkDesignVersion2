@@ -1,0 +1,104 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block body %}
+<body class="portfolio-columns two pc">
+  <!-- page header -->
+  {% include 'snippet/header.html' %}
+  <!--/ page header -->
+  <div class="top-bg">
+    
+    <img src="{% static 'img/splash-top.png' %}" class="splash-top" alt>
+    <div class="page-title zoomIn animated">portfolio</div>
+  </div>
+  <!-- page content -->
+  <section id="portfolio" class="portfolio">
+    <div class="grid-row">
+      <div class="portfolio-filter clear">
+        <div class="title">
+          <a href="#" class="all-iso-item active" data-filter=".item">ALL</a>
+          <span class="main-title">PORTFOLIO</span>
+          <span class="slash-icon">/</span>
+          <a href="#" data-filter=".photo">PHOTGRAPHY</a>
+          <a href="#" data-filter=".design">DESIGN</a>
+          <a href="#" data-filter=".video">VIDEO</a>
+          <a href="#" data-filter=".web">WEB</a>
+          <a href="#" data-filter=".music">MUSIC</a>
+        </div>
+      </div>
+    </div>
+    <div class="grid-row">
+      <div class="grid-col-row">
+        <div class="isotope portfolio-three-columns">
+          <div class="item photo">
+            <div class="portfolio-hover">
+              <div class="portfolio-info">
+                <a href=""><div class="portfolio-title">Future timeline</div></a>
+                <div class="portfolio-divider"></div>
+                <div class="portfolio-description">Business, Art</div>
+              </div>
+            </div>
+            <img src="{% static 'images/portfolio_three/two-columns-1.jpg' %}" alt>
+          </div>
+          <div class="item illust ">
+            <div class="portfolio-hover">
+              <div class="portfolio-info">
+                <a href=""><div class="portfolio-title">Sit Amet</div></a>
+                <div class="portfolio-divider"></div>
+                <div class="portfolio-description">Video, Art</div>
+              </div>
+            </div>
+            <img src="{% static 'images/portfolio_three/two-columns-2.jpg' %}" alt>
+          </div>
+          <div class="item photo illust">
+            <div class="portfolio-hover">
+              <div class="portfolio-info">
+                <a href=""><div class="portfolio-title">Sed Laoreete</div></a>
+                <div class="portfolio-divider"></div>
+                <div class="portfolio-description">Video, Photography</div>
+              </div>
+            </div>
+            <img src="{% static 'images/portfolio_three/two-columns-3.jpg' %}" alt>
+          </div>
+          <div class="item design video music">
+            <div class="portfolio-hover">
+              <div class="portfolio-info">
+                <a href=""><div class="portfolio-title">Amet Interdum</div></a>
+                <div class="portfolio-divider"></div>
+                <div class="portfolio-description">Music, Art</div>
+              </div>
+            </div>
+            <img src="{% static 'images/portfolio_three/two-columns-4.jpg' %}" alt>
+          </div>
+          <div class="item illust music">
+            <div class="portfolio-hover">
+              <div class="portfolio-info">
+                <a href=""><div class="portfolio-title">Cras varius</div></a>
+                <div class="portfolio-divider"></div>
+                <div class="portfolio-description">Music, Art</div>
+              </div>
+            </div>
+            <img src="{% static 'images/portfolio_three/two-columns-5.jpg' %}" alt>
+          </div>
+          <div class="item design video web">
+            <div class="portfolio-hover">
+              <div class="portfolio-info">
+                <a href=""><div class="portfolio-title">Maecenas Semper</div></a>
+                <div class="portfolio-divider"></div>
+                <div class="portfolio-description">Business, Video</div>
+              </div>
+            </div>
+            <img src="{% static 'images/portfolio_three/two-columns-6.jpg' %}" alt>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ page content -->
+  <!-- subscribe -->
+  {% include 'snippet/sub.html' %}
+  <!--/ subscribe -->
+  <!-- page footer -->
+  {% include 'snippet/footer2.html' %}
+  <!--/ page footer -->
+  {% endblock body %}

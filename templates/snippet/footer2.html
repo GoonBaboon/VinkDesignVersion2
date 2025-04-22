@@ -1,0 +1,92 @@
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+{% endblock css %}
+
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="{% static 'logo.png' %}"class='kunal' alt="">
+        </div>
+        
+        <div class="footer-column address-info">
+            <h3>Address</h3>
+            <div>
+                <p><strong class="footer-strong">Head Office:</strong></p>
+                <a href="https://maps.google.com?q=Sal+Baba+Market,+Behind+Bank+of+Maharashtra,+Naidu+Colony,+Ghatkopar+East,+Mumbai,+Maharashtra+400075" target="_blank" class="footer-link">
+                    <p>Sal Baba Market, Behind Bank of Maharashtra,</p>
+                    <p>Naidu Colony, Ghatkopar East,</p>
+                    <p>Mumbai, Maharashtra 400075</p>
+                </a>
+            </div>
+            <div style="margin-top: 15px;">
+                <p><strong class="footer-strong">Branch Office:</strong></p>
+                <a href="https://maps.google.com?q=Gayatri+Niwas,+Saibari,+Siliguri,+West+Bengal+734002" target="_blank" class="footer-link">
+                    <p>Gayatri Niwas, Saibari, Siliguri,</p>
+                    <p>West Bengal 734002,</p>
+                    <p>Landmark: Patanjali Store</p>
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer-column contact-info">
+            <h3>Contact</h3>
+            <a href="tel:+919969647226" class="footer-link">
+                <p>+91 9969647226</p>
+            </a>
+            <a href="tel:+918369333605" class="footer-link">
+                <p>+91 8369333605</p>
+            </a>
+            <a href="mailto:info@vinkdesigns.com" class="footer-link">
+                <p>info@vinkdesigns.com</p>
+            </a>
+        </div>
+        
+        <div class="footer-column">
+            <h3>Services</h3>
+            <ul>
+                {% for service in services %}
+                <li><a href="{% url "home:service_detail" service.slug %}">{{service.h1}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="footer-column">
+            <h3>Quick Link</h3>
+            <ul>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Company</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">News & Blog</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column newsletter">
+            <form action="{% url "home:newsletter" %}" method="post">
+                {% csrf_token %}
+            <h3>Newsletter</h3>
+            <p style="color: white;" >Subscribe to our newsletter to get updates</p>
+            <input type="email" name="email" placeholder="Your Email">
+            <button>Subscribe &gt;</button>
+        </form>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        {% comment %} <div class="social-icons">
+            <a href="#">↑</a>
+            <a href="#">☺</a>
+            <a href="#">🍀</a>
+        </div> {% endcomment %}
+        <div class="copyright">
+            2017 © All rights reserved by Vink Designs
+        </div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms & Conditions</a>
+        </div>
+    </div>
+</footer>

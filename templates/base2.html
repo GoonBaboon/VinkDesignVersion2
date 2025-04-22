@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    {% load static %}
+	<title>{% block title %}VinkDesigns{% endblock title %}</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<!--styles -->
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/jquery.fancybox.css' %}">
+	<link rel="stylesheet" href="{% static 'tuner/css/colorpicker.css' %}">
+	<link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+	<link rel="stylesheet" href="{% static 'css/jquery.owl.carousel.css' %}">
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'rs-plugin/css/settings.css' %}" media="screen" />
+	<!--styles -->
+	{% block css %}{% endblock css %}
+</head>
+{% comment %} {% include 'snippet/header.html' %} {% endcomment %}
+{% block body %}
+{% endblock body %}
+
+		<!-- page footer -->
+		<!--/ page footer -->
+		{% comment %} <a href="#" id="scroll-top" class="scroll-top"><i class="fa fa-angle-up"></i></a> {% endcomment %}
+		<!-- scripts -->
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'rs-plugin/js/jquery.themepunch.tools.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'rs-plugin/js/jquery.themepunch.revolution.min.js' %}"></script>	
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox_packed.js"></script>
+		<script src="{% static 'js/main.js' %}"></script>
+		<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+		<script src="{% static 'js/wow.min.js' %}"></script>
+		<script src="{% static 'js/jquery.isotope.min.js' %}"></script>
+		<script src="{% static 'js/jquery.owl.carousel.js' %}"></script>
+		<script src="{% static 'js/jquery.fancybox.pack.js' %}"></script>
+		<script src="{% static 'js/jquery.fancybox-media.js' %}"></script>
+		<script src="{% static 'tuner/js/colorpicker.js' %}"></script>
+		<script src="{% static 'js/retina.min.js' %}"></script>
+		<!--/ scripts -->
+		<script>
+			function shareContent(e) {
+				e.preventDefault();
+				if (navigator.share) {
+					navigator.share({
+						title: document.title,
+						text: 'Check out this content!',
+						url: window.location.href,
+					}).catch(err => {
+						console.log('Error sharing:', err);
+					});
+				} else {
+					// Fallback for browsers without Share API
+					window.open(
+						'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href),
+						'facebook-share-dialog',
+						'width=626,height=436'
+					);
+				}
+			}
+			</script>
+			<script>
+				function toggleHeart(e) {
+					e.preventDefault();
+					const heart = e.target;
+					heart.classList.toggle('liked'); // Toggle the 'liked' class
+				}
+				
+				// Or with event listener (alternative approach):
+				document.getElementById('heartIcon').addEventListener('click', function(e) {
+					e.preventDefault();
+					this.classList.toggle('liked');
+				});
+				function shareContent(event, url, title) {
+					event.preventDefault();
+					
+					// Check if Web Share API is supported (mobile devices)
+					if (navigator.share) {
+						navigator.share({
+							title: title,
+							url: url
+						}).catch(err => {
+							console.log('Error sharing:', err);
+							fallbackShare(url, title);
+						});
+					} else {
+						// Fallback for desktop browsers
+						fallbackShare(url, title);
+					}
+				}
+				
+				function fallbackShare(url, title) {
+					// Copy to clipboard as fallback
+					const shareUrl = `${window.location.origin}${url}`;
+					const tempInput = document.createElement('input');
+					tempInput.value = shareUrl;
+					document.body.appendChild(tempInput);
+					tempInput.select();
+					document.execCommand('copy');
+					document.body.removeChild(tempInput);
+					
+					// Alert or use a more elegant notification
+					alert('Link copied to clipboard: ' + shareUrl);
+					
+					// Alternatively, open a popup with common share options
+					// window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, 'pop', 'width=600, height=400, scrollbars=no');
+				}
+				</script>
+				<script>
+					document.addEventListener('DOMContentLoaded', function() {
+						const searchInput = document.getElementById('search-input');
+						const resultsContainer = document.getElementById('search-results');
+						const searchForm = document.querySelector('.widget_search');
+					
+						if (searchInput && resultsContainer && searchForm) {
+							// 🔥 Force the placeholder override
+							searchInput.placeholder = 'Search blogs...';
+							// Live search functionality
+							searchInput.addEventListener('input', function() {
+								const query = this.value.trim();
+								
+								if (query.length > 1) {
+									fetch(`/live-search/?term=${encodeURIComponent(query)}`)
+										.then(response => response.json())
+										.then(data => {
+											resultsContainer.innerHTML = '';
+											if (data.length > 0) {
+												data.forEach(item => {
+													const resultItem = document.createElement('a');
+													resultItem.href = item.url;
+													resultItem.textContent = item.title;
+													resultItem.className = 'search-result-item';
+													resultsContainer.appendChild(resultItem);
+												});
+											} else {
+												const noResults = document.createElement('div');
+												noResults.textContent = 'No matching blogs found';
+												noResults.className = 'search-result-item no-results';
+												resultsContainer.appendChild(noResults);
+											}
+											resultsContainer.style.display = 'block';
+										})
+										.catch(error => {
+											console.error('Error:', error);
+											resultsContainer.style.display = 'none';
+										});
+								} else {
+									resultsContainer.style.display = 'none';
+								}
+							});
+							
+							// Close dropdown when clicking outside
+							document.addEventListener('click', function(e) {
+								if (!searchForm.contains(e.target)) {
+									resultsContainer.style.display = 'none';
+								}
+							});
+							
+							// Keep dropdown open when clicking on results
+							resultsContainer.addEventListener('click', function(e) {
+								e.stopPropagation();
+							});
+							
+							// Handle form submission
+							searchForm.querySelector('form').addEventListener('submit', function(e) {
+								const query = searchInput.value.trim();
+								if (!query) {
+									e.preventDefault();
+									resultsContainer.style.display = 'none';
+								}
+							});
+						}
+					});
+				</script>
+				
+							
+
+				
+	</body>
+</html>

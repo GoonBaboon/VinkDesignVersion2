@@ -1,0 +1,119 @@
+
+{% extends 'base2.html' %}
+{% load static %}
+{% block body %}
+<body class="contact-page pc">
+	<!-- page header -->
+	{% include 'snippet/header.html' %}
+	<!--/ page header  -->
+	<div class="top-bg">
+    	<img src="img/splash-top.png" class="splash-top" alt>
+		<div class="page-title zoomIn animated">contact</div>
+	</div>
+	<!-- page content -->
+	<div class="page-content">
+		<div class="grid-row">
+			<div id="content" role="main">
+				<div class="title">
+					<span class="main-title">CONTACT</span><span class="slash-icon">/<i class="fa fa-angle-double-right"></i></span><h5>GET IN TOUCH WITH US</h5>
+				</div>
+				<p>We peel back the layers uncertainty, uncovering hidden truths that lie beneath the surface of our reality.</p>
+				<div class="grid-col-row clear">
+					<div class="grid-col grid-col-3 sidebar">
+						<div class="contacts">
+							<div class="">
+								<i class="fa fa-globe"></i>
+								<div class="contact-content">
+									<strong>Where we are:</strong>
+									<p>Sal Baba Market, Behind Bank of Maharashtra,
+										Naidu Colony, Ghatkopar East,
+										<br/>Mumbai, Maharashtra 400075,India</p>
+								</div>
+							</div>
+							<div class="">
+								<i class="fa fa-phone"></i>
+								<div class="contact-content">
+									<strong>Customer Care:</strong>
+									<p><a href="tel:+919969647226" style="color: inherit; text-decoration: none;">+91 9969647226</a></p>
+								</div>
+							</div>
+							<div class="">
+								<i class="fa fa-envelope-o"></i>
+								<div class="contact-content">
+									<strong>General Email:</strong>
+									<p><a href="mailto:info@vinkdesigns.com" style="color: inherit; text-decoration: none;">info@vinkdesigns.com</a></p>
+								</div>
+							</div>
+							<div class="">
+								<i class="fa fa-power-off"></i>
+								<div class="contact-content">
+									<strong>Work Time:</strong>
+									<p>Mon. - Fri. 09:00 - 24:00</p>
+								</div>
+							</div>
+							<div class="last">
+								<i class="fa fa-share-alt"></i>
+								<div class="contact-content">
+									<strong>Follow us:</strong>
+									<a href="#" class="contact-round"><i class="fa fa-twitter"></i></a>
+									<a href="#" class="contact-round"><i class="fa fa-facebook"></i></a>
+									<a href="#" class="contact-round"><i class="fa fa-skype"></i></a>
+									<a href="#" class="contact-round"><i class="fa fa-rss"></i></a>
+									<a href="#" class="contact-round"><i class="fa fa-linkedin"></i></a>
+								</div>
+							</div>
+						</div>	
+					</div>
+					<div class="grid-col grid-col-9">
+						<div class="composer">
+							<div class="info-boxes error-message" id="feedback-form-errors">
+								<div class="info-box-icon"><i class="fa fa-times"></i></div>
+								<strong>Error box</strong><br />
+								<div class="message"></div>
+							</div>
+							<div class="info-boxes confirmation-message" id="feedback-form-success">
+								<div class="info-box-icon"><i class="fa fa-check"></i></div>
+								<strong>Confirmation box</strong><br />Vestibulum sodales pellentesque nibh quis imperdiet
+								<div class="close-button"><i class="fa fa-times"></i></div>
+							</div>
+						</div>
+						<div class="email_server_responce"></div>
+						<form action="{% url "home:contact" %}" method="post" id="feedback-form" class="message-form clear">
+							{% csrf_token %}
+							<p class="message-form-author">
+								<label for="author">Your Name <span class="required">*</span></label>
+								<input id="author" name="name" type="text" value="" size="30" aria-required="true">
+							</p>
+							<p class="message-form-email">
+								<label for="email">Your E-mail <span class="required">*</span></label>
+								<input id="email" name="email" type="text" value="" size="30" aria-required="true">
+							</p>
+							<p class="message-form-website">
+								<label for="website">Subject <span class="required">*</span></label>
+								<input id="website" name="subject" type="text" value="" size="30" aria-required="true">
+							</p>
+							<p class="message-form-message">
+								<label for="message">Your Messege</label>
+								<textarea id="message" name="message" cols="45" rows="10" aria-required="true"></textarea>
+							</p>
+							<p class="form-submit rectangle-button green medium">
+								<input name="submit" type="submit" id="submit" value="Send">
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/ page content -->
+	<!-- map -->
+	<div class="contact-map">
+		<div class="map">
+			<div id="map" class="google-map"></div>
+		</div>
+		{% include 'snippet/sub.html' %}
+	</div>
+	<!--/ map -->
+	<!-- page footer -->
+	{% include 'snippet/footer2.html' %}
+	{% endblock body %}
