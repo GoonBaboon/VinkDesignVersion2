@@ -92,53 +92,10 @@
 		</div>
 	  </section>
 	
-	<section class="innovation parallaxed">
-		<div class="parallax-image" data-parallax-left="0.5" data-parallax-top="0.3" data-parallax-scroll-speed="0.5">
-			<img src="{% static 'images//about/parallax-about-2.jpg' %}" alt="">
-		</div>
-		<div class="grid-row">
-			<div class="parallax-content-third">
-				<div class="clear table">
-					<div class="grid-col-4 title-innovation">
-						<div class="innovation-header">our client & testimonial
-						<div class="slash-line"></div></div>
-					</div>
-					<div class="grid-col grid-col-8">
-						<div id="client-carousel" class="owl-carousel">
-							{% for group in testimonial_groups %}
-								<div>
-									{% for t in group %}
-										{% if t %}  {# Skip None if zip_longest used #}
-											<div class="client-item clear">
-												<div class="client-icon">
-													<div class="border-img">
-															<div class="window-tabs">
-																<div class="overflow-block"></div>
-																{% if t.image %}
-																<img src="{{ t.image.url }}" alt="{{ t.name }}">
-															{% else %}
-																<img src="{% static 'nopic.webp' %}" alt="{{ t.name }}">
-															{% endif %}
-															
-															</div>
-													</div>
-												</div>
-												<h3 class="header-header" >{{ t.name }}<span> - {{ t.role }}</span></h3>
-												<p>{{ t.testimonial }}</p>
-											</div>
-										{% endif %}
-									{% endfor %}
-								</div>
-							{% endfor %}
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="them-mask"></div>
-		<div class="background-color style-2"></div>
-	</section>
+	
+	
+	  
+	
 	<section class="padding-section">
 		<div class="grid-row clear">
 			<div class="grid-col-row clear why-choose">
@@ -178,6 +135,55 @@
 			</div>
 		</div>
 		<hr/>
+		</section>
+		<section class="innovation parallaxed">
+			<div class="parallax-image" data-parallax-left="0.5" data-parallax-top="0.3" data-parallax-scroll-speed="0.5">
+				<img src="{% static 'images//about/parallax-about-2.jpg' %}" alt="">
+			</div>
+			<div class="grid-row">
+				<div class="parallax-content-third">
+					<div class="clear table">
+						<div class="grid-col-4 title-innovation">
+							<div class="innovation-header">our client & testimonial
+							<div class="slash-line"></div></div>
+						</div>
+						<div class="grid-col grid-col-8">
+							<div id="client-carousel" class="owl-carousel">
+								{% for group in testimonial_groups %}
+									<div>
+										{% for t in group %}
+											{% if t %}  {# Skip None if zip_longest used #}
+												<div class="client-item clear">
+													<div class="client-icon">
+														<div class="border-img">
+																<div class="window-tabs">
+																	<div class="overflow-block"></div>
+																	{% if t.image %}
+																	<img src="{{ t.image.url }}" alt="{{ t.name }}">
+																{% else %}
+																	<img src="{% static 'nopic.webp' %}" alt="{{ t.name }}">
+																{% endif %}
+																
+																</div>
+														</div>
+													</div>
+													<h3 class="header-header" >{{ t.name }}<span> - {{ t.role }}</span></h3>
+													<p>{{ t.testimonial }}</p>
+												</div>
+											{% endif %}
+										{% endfor %}
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="them-mask"></div>
+			<div class="background-color style-2"></div>
+		</section>
+
+		<section>
 		<div class="grid-row">
 			<div class="related-projects">
 				<div class="title">
@@ -217,6 +223,8 @@
 	</section>
 	
 	
+
+
 	<!--/ page content  -->
 	<!-- subscribe -->
 	{% include 'snippet/sub.html' %}

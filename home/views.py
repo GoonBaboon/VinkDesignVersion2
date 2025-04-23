@@ -124,43 +124,6 @@ def contact(request):
     }
     return render(request, 'contact.html',context)
 
-# def blog_detail(request, slug):
-#     tags = Tags.objects.all()
-#     categories = Category.objects.all()
-#     blog = Blog.objects.get(slug=slug)
-#     comments = blog.comments.filter(active=True).order_by('-created_at')[:4]
-#     count = blog.comments.filter(active=True)
-#     new_comment = None
-    
-#         # Count posts per category
-#     for category in categories:
-#         category.post_count = category.blog_set.count()
-    
-#     recent_posts = Blog.objects.order_by('-published')[:15]  # Get latest 15 posts (adjust as needed)
-#     slides = [recent_posts[i:i+3] for i in range(0, len(recent_posts), 3)] 
-
-#     if request.method == 'POST':
-#         comment_form = CommentForm(data=request.POST)
-#         if comment_form.is_valid():
-#             new_comment = comment_form.save(commit=False)
-#             new_comment.blog = blog
-#             new_comment.save()
-#     else:
-#         comment_form = CommentForm()
-
-    # context = {
-    #     'blog':blog,
-    #     'count':count,
-    #     'comments': comments,
-    #     'new_comment': new_comment,
-    #     'comment_form': comment_form,
-    #     'recent_post_slides': slides,
-    #     'categories': categories,
-    #     'tags': tags,
-    # }
-    # return render(request, 'blog-single-post.html', context)
-
-
 
 
 def service_list(request):
@@ -190,51 +153,34 @@ def service_list(request):
     return render(request, 'service_list.html', context)
 
 
-# def blog_by_tag(request, tag_name):
-#     # Fetch the tag using the tag_name
-#     tag = get_object_or_404(Tags, tags=tag_name)
-    
-#     # Filter blogs by the tag
-#     blog_list = Blog.objects.filter(tag__tags=tag)  # Using double underscore for ManyToManyField
-    
-#     # Paginate the results
-#     paginator = Paginator(blog_list, 2)  # 2 blogs per page
-
-#     page_number = request.GET.get('page')  # get ?page=2
-#     page_obj = paginator.get_page(page_number)
-    
-#     # Get categories and tags for sidebar
-#     categories = Category.objects.all()
-#     tags = Tags.objects.all()  # Assuming you have a Tags model
-    
-#             # Count posts per category
-#     for category in categories:
-#         category.post_count = category.blog_set.count()
-    
-#     # Recent posts (optional)
-#     recent_posts = Blog.objects.order_by('-published')[:5]  # Get 5 most recent posts
-    
-#     context = {
-#         'blogs': page_obj,
-#         'tag': tag,
-#         'page_obj': page_obj,
-#         'categories': categories,
-#         'tags': tags,
-#         'recent_post_slides': [recent_posts[i:i+3] for i in range(0, len(recent_posts), 3)],  # Divide recent posts into slides
-#     }
-    
-#     return render(request, 'blog_by_tag.html', context)
-
-
-
-
 
 def service_detail(request, slug):
+    services = Services.objects.all()
+    all_testimonials = Testimonial.objects.all().order_by('-date_added')  # Optional: Latest first
+    grouped_testimonials = chunk_testimonials(list(all_testimonials), 3)
+    
+    paginator = Paginator(services, 2)  # 2 blogs per page
+    page_number = request.GET.get('page')  # get ?page=2
+    page_obj = paginator.get_page(page_number)
+    
+    recent_posts = Blog.objects.order_by('-published')[:15]  # Get latest 15 posts
+    slides = [recent_posts[i:i+3] for i in range(0, len(recent_posts), 3)] 
+    
+    # ✅ Missing lines added
+    categories = Category.objects.all()
+    tags = Tags.objects.all()
     
     data = Services.objects.get(slug=slug)
+    
 
     context = {
         'data':data,
+        'page_obj': page_obj,
+        'services': services,
+        'testimonial_groups': grouped_testimonials,
+        'categories': categories,
+        'recent_post_slides': slides,
+        'tags': tags,
     }
     return render(request, 'service_detail.html', context)
 

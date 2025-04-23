@@ -2,34 +2,26 @@
 
 
 <aside class="grid-col grid-col-3 sidebar">
-    <!-- widget search -->
-    <div id="search" class="widget widget_search">
-        <form method="get" class="search-form" action="http://wp.com/">
-            <label>
-                <span class="screen-reader-text">Search for:</span>
-                <input type="search" class="search-field" placeholder="Search …" value="" name="s" title="Search for:"></label>
-            <input type="submit" class="search-submit" value="Search">
-        </form>
-    </div>
-    <!-- widget search -->
+
     <!-- follow widget -->
     {% include 'snippet/follow_and_sub.html' %}
     <!-- follow widget -->
 
+    <hr class="divider-green">
     <!-- categories widget -->
-    {% comment %} <div id="categories" class="widget widget_categories">
-        <div class="widget-title">Categories</div>
+    <div id="categories" class="widget widget_categories">
+        <div class="widget-title">Services Categories</div>
         <ul>
-            <li class="cat-item cat-item-1 current-cat"><a href="#">Another Category</a> (1) </li>
-            <li class="cat-item cat-item-1 current-cat"><a href="#">Blogroll</a> (7) </li>
-            <li class="cat-item cat-item-1 current-cat"><a href="#">Community</a> (1) </li>
-            <li class="cat-item cat-item-1 current-cat"><a href="#">Daily</a> (2) </li>
-            <li class="cat-item cat-item-1 current-cat"><a href="#">Graphics</a> (2) </li>
-            <li class="cat-item cat-item-1 current-cat"><a href="#">Journal</a> (1) </li>
-            <li class="cat-item cat-item-1 current-cat"><a href="#">Photography</a> (1) </li>
+            {% for service in services %}
+            <li class="cat-item cat-item-1">
+                <a href="{% url "home:service_detail" service.slug %}">{{ service.h1 }}</a> 
+
+            </li>
+            {% endfor %}
         </ul>
-    </div> {% endcomment %}
+    </div>
     <!-- categories widget -->
+    <hr class="divider-green">
 
     <!-- recent comments widget -->
     <div class="widget widget-recent-comments clear">
@@ -58,66 +50,7 @@
     <!-- recent comments widget -->
     <hr class="divider-green">
     <!-- text widget -->
-    <!-- gallery widget -->
-    <div class="widget widget-gallery">
-        <div class="widget-title">Mini Gallery</div>
-        <div class="carousel-nav">
-            <div class="carousel-button">
-                <div class="prev"><i class="fa fa-chevron-left"></i></div>
-                <div class="next"><i class="fa fa-chevron-right"></i></div>
-            </div>
-        </div>
-        <div id="carousel-gallery-widget" class="owl-carousel owl-widget">
-            <div class="item-gallery-image picture">
-                <div class="hover-effect"></div>
-                <div class="link-cont">
-                    <a href="#" class="cws-slide-left fancy fa fa-link"></a>
-                    {% comment %} <a href="{% static 'images/portfolio_three/four-columns-5@2x.jpg' %}" class="fancy fa fa-search"></a> {% endcomment %}
-                    <a href="#" class="cws-slide-right fa fa-heart"></a>
-                </div>
-                <img src="{% static 'images/portfolio_three/four-columns-5.jpg' %}" alt="">
-            </div>
-            <div class="item-gallery-image picture">
-                <div class="hover-effect"></div>
-                <div class="link-cont">
-                    <a href="#" class="cws-slide-left fancy fa fa-link"></a>
-                    <a href="{% static 'images/portfolio_three/four-columns-6@2x.jpg' %}" class="fancy fa fa-search"></a>
-                    <a href="#" class="cws-slide-right fa fa-heart"></a>
-                </div>
-                <img src="{% static 'images/portfolio_three/four-columns-6.jpg' %}" alt="">
-            </div>
-            <div class="item-gallery-image picture">
-                <div class="hover-effect"></div>
-                <div class="link-cont">
-                    <a href="#" class="cws-slide-left fancy fa fa-link"></a>
-                    <a href="{% static 'images/portfolio_three/four-columns-8@2x.jpg' %}" class="fancy fa fa-search"></a>
-                    <a href="#" class="cws-slide-right fa fa-heart"></a>
-                </div>
-                <img src="{% static 'images/portfolio_three/four-columns-8.jpg' %}" alt="">
-            </div>
-            <div class="item-gallery-image picture">
-                <div class="hover-effect"></div>
-                <div class="link-cont">
-                    <a href="#" class="cws-slide-left fancy fa fa-link"></a>
-                    <a href="{% static 'images/portfolio_three/four-columns-9@2x.jpg' %}" class="fancy fa fa-search"></a>
-                    <a href="#" class="cws-slide-right fa fa-heart"></a>
-                </div>
-                <img src="{% static 'images/portfolio_three/four-columns-9.jpg' %}" alt="">
-            </div>
-            <div class="item-gallery-image picture">
-                <div class="hover-effect"></div>
-                <div class="link-cont">
-                    <a href="#" class="cws-slide-left fancy fa fa-link"></a>
-                    <a href="{% static 'images/portfolio_three/four-columns-10@2x.jpg' %}" class="fancy fa fa-search"></a>
-                    <a href="#" class="cws-slide-right fa fa-heart"></a>
-                </div>
-                <img src="{% static 'images/portfolio_three/four-columns-10.jpg' %}" alt="">
-            </div>
-        </div>
-    </div>
-    <!-- gallery widget -->
     <!-- text widget -->
-    <hr class="divider-green">
     <!-- recent post widget -->
     <div class="widget widget-recent-posts">
         <div class="widget-title">Recent Posts</div>
