@@ -20,25 +20,33 @@
 										<span class="main-title">{{data.title}}</span>
 									</div>
 									<div class="post-info clear">
-										{% comment %} <span><i class="fa fa-calendar"></i> {{service.published}}</span>
-										<span><i class="fa fa-edit"></i> {{blog.author}}</span> {% endcomment %}
+										{% comment %}
+										<span><i class="fa fa-calendar"></i> {{service.published}}</span>
+										<span><i class="fa fa-edit"></i> {{blog.author}}</span>
+										{% endcomment %}
 										<div></div>
 									</div>
 									<div class="pf-single-carousel">
 										<div id="pf-single-carousel" class="owl-carousel">
 											<div><img style="margin-top: 30px;" src="{{data.image.url}}" alt=""></div>
-
 										</div>
 									</div>
 									<dl>
+										{% comment %}
 										<dt><strong>{{data.title}}</strong></dt>
-											<dd>{{data.content|safe}}</dd>
+										{% endcomment %}
+										<dd>{{data.content|safe}}</dd>
 									</dl>
-									<div class="follow-subscribe-icon clear">
+							
+									<!-- 🔘 CTA Button -->
+									<div style="margin-top: 20px;">
+										<a class="rectangle-button medium" href="{% url "home:contact" %}">Let's connect</a>
 									</div>
+							
+									<div class="follow-subscribe-icon clear"></div>
 								</div>
-								<hr />
 							</div>
+							
 							
 						</div>
 						
