@@ -10,13 +10,7 @@ class Category(models.Model):
     def __str__(self):
         return self.category
     
-
-class Tags(models.Model):
-    tags = models.CharField(max_length = 156)
-    def __str__(self):
-        return self.tags   
-
-
+    
 class Author(models.Model):
     description = RichTextUploadingField()
     name = models.CharField(max_length = 156)
@@ -29,6 +23,14 @@ class Author(models.Model):
     def __str__(self):
         return self.name 
         
+
+
+class Tags(models.Model):
+    tags = models.CharField(max_length = 156)
+    def __str__(self):
+        return self.tags   
+
+
 class Blog(models.Model):
     status  = models.BooleanField(default=True)
     
@@ -63,6 +65,8 @@ class Blog(models.Model):
         
     def __str__(self):
         return self.h1 
+    
+    
 
 
 class Comment(models.Model):

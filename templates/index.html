@@ -100,6 +100,87 @@
       </div>
     </section>
     
+    <section class="text-section parallaxed">
+      <div class="parallax-image" data-parallax-left="0.5" data-parallax-top="0.3" data-parallax-scroll-speed="0.5">
+        <img src="{% static 'images/parallax-2.jpg' %}" alt="">
+      </div>
+      <div class="grid-row">
+        <div class="parallax-content-second">
+          <div class="grid-col-row clear">
+          
+            <div class="grid-col grid-col-3">
+              <div class="counter-block">
+                <i class="fa fa-puzzle-piece"></i>
+                <div class="counter" data-count="1000" data-suffix="+">0+</div>
+                <div class="counter-name">Creative Work</div>
+              </div>
+            </div>
+            
+            <div class="grid-col grid-col-3">
+              <div class="counter-block">
+                <i class="fa fa-group"></i>
+                <div class="counter" data-count="945" data-suffix="+">0+</div>
+                <div class="counter-name">Satisfied Clients</div>
+              </div>							
+            </div>
+            
+            <div class="grid-col grid-col-3">
+              <div class="counter-block">
+                <i class="fas fa-mouse-pointer"></i> <!-- Use mouse-pointer icon from Font Awesome 6 -->
+                <div class="counter" data-count="6000" data-suffix="+">0+</div>
+                <div class="counter-name">Ad Clicks Generated</div>
+              </div>
+            </div>
+            
+            <div class="grid-col grid-col-3">
+              <div class="counter-block last">
+                <i class="fas fa-users"></i> <!-- Use users icon from Font Awesome 6 -->
+                <div class="counter" data-count="99.7" data-suffix="%">0%</div>
+                <div class="counter-name">Client Retention Rate</div>
+              </div>
+            </div>
+            
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          const counters = document.querySelectorAll('.counter');
+      
+          counters.forEach(counter => {
+              const target = parseFloat(counter.getAttribute('data-count'));
+              const suffix = counter.getAttribute('data-suffix') || '';
+              let current = 0;
+      
+              const isDecimal = suffix === "%";
+      
+              const updateCount = () => {
+                  const increment = (target - current) / 20;  // BIGGER increment (was 100 before)
+      
+                  if (current < target) {
+                      current += increment;
+                      counter.innerText = isDecimal
+                          ? current.toFixed(1) + suffix   // decimal with one place
+                          : Math.floor(current) + suffix; // integer
+                      setTimeout(updateCount, 10); // faster timeout (was 20ms before)
+                  } else {
+                      counter.innerText = isDecimal
+                          ? target.toFixed(1) + suffix
+                          : Math.floor(target) + suffix;
+                  }
+              };
+      
+              counter.innerText = isDecimal ? "0.0" + suffix : "0" + suffix;
+              updateCount();
+          });
+      });
+      </script>
+      
+    
 
 
     <section id="portfolio" class="portfolio padding-section">
@@ -251,9 +332,17 @@
 
 
     <section id="innovation" class="innovation parallaxed">
-      <div class="parallax-image" data-parallax-left="0.5" data-parallax-top="0.3" data-parallax-scroll-speed="0.5">
-        <img src="{% static 'images/parallax-3.jpg' %}" alt="" />
-      </div>
+      {% if testimonials %}
+  <div class="parallax-image" data-parallax-left="0.5" data-parallax-top="0.3" data-parallax-scroll-speed="0.5">
+    <img src="{{ testimonials.0.testimonial_background.url }}" alt="Testimonial Background" />
+  </div>
+{% else %}
+  <!-- Fallback if no testimonial -->
+  <div class="parallax-image">
+    <img src="{% static 'images/parallax-3.jpg' %}" alt="Default Background" />
+  </div>
+{% endif %}
+
       <div class="grid-row">
         <div class="parallax-content-third">
           <div id="client-carousel" class="owl-carousel">

@@ -122,9 +122,9 @@ def blog_detail(request, slug):
 
 
 
-def blog_by_tag(request, tag_slug):
+def blog_by_tag(request, tag_name):
     # Fetch the tag using the tag_name
-    tag = get_object_or_404(Tags, tags=tag_slug)
+    tag = get_object_or_404(Tags, tags=tag_name)
     
     # Filter blogs by the tag
     blog_list = Blog.objects.filter(tag__tags=tag)  # Using double underscore for ManyToManyField
@@ -161,40 +161,62 @@ def blog_by_tag(request, tag_slug):
 
 
 
-class BlogSearchView(ListView):
-    template_name = 'blog/blog_search_results.html'
-    context_object_name = 'results'
-    paginate_by = 10
+# class BlogSearchView(ListView):
+#     template_name = 'blog/blog_search_results.html'
+#     context_object_name = 'results'
+#     paginate_by = 10
 
-    def get_queryset(self):
-        query = self.request.GET.get('q')
-        if query:
-            return Blog.objects.filter(
-                Q(title__icontains=query) | 
-                Q(content__icontains=query)
-            ).distinct()
-        return Blog.objects.none()
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['query'] = self.request.GET.get('q', '')
-        return context
-
-def live_search(request):
-    query = request.GET.get('term', '')
-    if query:
-        results = Blog.objects.filter(
-            Q(title__icontains=query) | 
-            Q(content__icontains=query)
-        ).values('title', 'slug')[:5]
+#     def get_queryset(self):
+#         query = self.request.GET.get('q')
+#         tag_query = self.request.GET.get('tag')
         
-        # Add absolute URLs to the results
-        results_list = list(results)
-        for item in results_list:
-            item['url'] = reverse('home:blog-single-post', args=[item['slug']])
+#         queryset = Blog.objects.none()
         
-        return JsonResponse(results_list, safe=False)
-    return JsonResponse([], safe=False)
+#         if query:
+#             queryset = Blog.objects.filter(
+#                 Q(title__icontains=query) | 
+#                 Q(content__icontains=query)
+#             ).distinct()
+        
+#         if tag_query:
+#             tag_filter = Blog.objects.filter(tag__tags__icontains=tag_query)
+#             queryset = tag_filter if not queryset else queryset & tag_filter
+        
+#         return queryset.distinct()
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['query'] = self.request.GET.get('q', '')
+#         context['tag'] = self.request.GET.get('tag', '')
+#         context['all_tags'] = Tags.objects.all().order_by('tags')
+#         return context
+#         return context
+
+# def live_search(request):
+#     query = request.GET.get('term', '')
+#     tag_query = request.GET.get('tag', '')
+    
+#     if query or tag_query:
+#         results = Blog.objects.all()
+        
+#         if query:
+#             results = results.filter(
+#                 Q(title__icontains=query) | 
+#                 Q(content__icontains=query)
+#             )
+        
+#         if tag_query:
+#             results = results.filter(tag__tags__icontains=tag_query)
+        
+#         results = results.values('title', 'slug')[:5]
+        
+#         results_list = list(results)
+#         for item in results_list:
+#             item['url'] = reverse('home:blog-single-post', args=[item['slug']])
+        
+#         return JsonResponse(results_list, safe=False)
+    
+#     return JsonResponse([], safe=False)
 
 
 

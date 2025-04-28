@@ -155,6 +155,7 @@ class Testimonial(models.Model):
     testimonial = models.TextField(help_text="The testimonial text.")
     date_added = models.DateField(auto_now_add=True, help_text="The date when the testimonial was added.")
     image = models.ImageField(upload_to='data',default='default/nopic.webp', blank=True, null=True, help_text="Image for the testimonial.")
+    testimonial_background = models.ImageField(default='default/parallax-3.jpg')
 
     def __str__(self):
         return f"Testimonial by {self.name}"

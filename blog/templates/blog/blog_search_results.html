@@ -4,13 +4,37 @@
 <div class="blog-content">
     <div class="grid-row">
         <div class="blog">
-            <h1>Search Results for "{{ query }}"</h1>
+            <h1>
+                {% if tag %}
+                    Search Results for tag "{{ tag }}"
+                    {% if query %} containing "{{ query }}"{% endif %}
+                {% else %}
+                    Search Results for "{{ query }}"
+                {% endif %}
+            </h1>
+            
+            <!-- Tag cloud -->
+            <div class="tag-cloud" style="margin-bottom: 20px;">
+                {% for tag_obj in all_tags %}
+                    <a href="{% url 'home:search' %}?tag={{ tag_obj.tags|urlencode }}{% if query %}&q={{ query|urlencode }}{% endif %}" 
+                       class="tag{% if tag_obj.tags == tag %} active{% endif %}">
+                        {{ tag_obj.tags }}
+                    </a>
+                {% endfor %}
+            </div>
             
             {% if results %}
                 {% for post in results %}
                 <div class="item clear">
                     <div class="item-header">
                         <h2><a href="{% url 'home:blog-single-post' post.slug %}">{{ post.title }}</a></h2>
+                        <div class="post-tags">
+                            {% for tag_obj in post.tag.all %}
+                                <a href="{% url 'home:search' %}?tag={{ tag_obj.tags|urlencode }}" class="post-tag">
+                                    {{ tag_obj.tags }}
+                                </a>
+                            {% endfor %}
+                        </div>
                     </div>
                     <div class="content">
                         <p>{{ post.content|truncatewords:50|safe }}</p>
@@ -24,24 +48,28 @@
                 {% if is_paginated %}
                 <div class="pagination">
                     {% if page_obj.has_previous %}
-                        <a href="?q={{ query }}&page={{ page_obj.previous_page_number }}">Previous</a>
+                        <a href="?{% if query %}q={{ query }}&{% endif %}{% if tag %}tag={{ tag }}&{% endif %}page={{ page_obj.previous_page_number }}">Previous</a>
                     {% endif %}
                     
                     <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
                     
                     {% if page_obj.has_next %}
-                        <a href="?q={{ query }}&page={{ page_obj.next_page_number }}">Next</a>
+                        <a href="?{% if query %}q={{ query }}&{% endif %}{% if tag %}tag={{ tag }}&{% endif %}page={{ page_obj.next_page_number }}">Next</a>
                     {% endif %}
                 </div>
                 {% endif %}
             {% else %}
                 <div class="no-results-message">
-                    <p>No blog posts found matching "{{ query }}"</p>
+                    <p>No blog posts found 
+                        {% if tag %}with tag "{{ tag }}"{% endif %}
+                        {% if query %}matching "{{ query }}"{% endif %}
+                    </p>
                     <p>Suggestions:</p>
                     <ul>
                         <li>Try different keywords</li>
                         <li>Check your spelling</li>
                         <li>Browse our <a href="{% url 'home:blog' %}">all blogs</a></li>
+                        <li>Try a different tag</li>
                     </ul>
                 </div>
             {% endif %}

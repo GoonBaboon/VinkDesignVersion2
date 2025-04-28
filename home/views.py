@@ -225,4 +225,4 @@ def portfolio(request):
         'categories': categories,
         'images': images,
     }
-    return render(request, 'portfolio-two-columns.html', context)
+    return render(request, 'port_folio3col.html', context)

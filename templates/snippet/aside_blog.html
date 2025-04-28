@@ -1,8 +1,8 @@
 {% load static %}
 <aside class="grid-col grid-col-3 sidebar">
     <!-- widget search -->
-    <div id="search" class="widget widget_search">
-        <form method="get" class="search-form" action="{% url 'blog:search' %}">
+    {% comment %} <div id="search" class="widget widget_search">
+        <form method="get" class="search-form" action="{% url 'blog:blog_by_tag' %}">
             <label>
                 <span class="screen-reader-text">Search for:</span>
                 <input type="search" id="search-input" class="search-field" 
@@ -12,7 +12,7 @@
             <input type="submit" class="search-submit" value="Search">
         </form>
         <div id="search-results" class="search-results-dropdown"></div>
-    </div>
+    </div> {% endcomment %}
     <!-- widget search -->
     <!-- follow widget -->
     {% include 'snippet/follow_and_sub.html' %}
