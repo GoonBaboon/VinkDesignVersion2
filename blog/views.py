@@ -195,3 +195,7 @@ def live_search(request):
         
         return JsonResponse(results_list, safe=False)
     return JsonResponse([], safe=False)
+
+
+
+

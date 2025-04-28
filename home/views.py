@@ -8,7 +8,7 @@ from django.urls import reverse
 from django.views.generic import ListView
 from home.models import *
 from blog.models import *
-
+from django.db.models import Prefetch
 from .forms import *
 
 
@@ -27,15 +27,21 @@ def chunk_items(items, chunk_size):
 
 # END HELPER FUNCTIONS
 
+
+
 def index(request):
     testimonials = Testimonial.objects.all()
-
+    categories = list(PortfolioCategory.objects.all())
+    # Sort with 'interior' first, then others alphabetically
+    categories.sort(key=lambda x: (x.name.lower() != 'interior', x.name.lower()))
+    images = PortfolioImage.objects.select_related('category').all()
 
     context = {
-        'testimonials':testimonials,
-
+        'testimonials': testimonials,
+        'categories': categories,
+        'images': images,
     }
-    return render(request,'index.html',context)
+    return render(request, 'index.html', context)
 
 def about(request):
     blogs = Blog.objects.all()
@@ -51,8 +57,7 @@ def about(request):
 
 
 
-def portfolio(request):
-    return render(request,'portfolio-two-columns.html',{})
+
 
 
 
@@ -211,3 +216,13 @@ def newsletter(request):
     context = {
     }
     return render(request, 'index.html', context)
+
+
+def portfolio(request):
+    categories = PortfolioCategory.objects.all()   # <-- fixed this
+    images = PortfolioImage.objects.all()
+    context = {
+        'categories': categories,
+        'images': images,
+    }
+    return render(request, 'portfolio-two-columns.html', context)

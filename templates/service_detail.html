@@ -6,7 +6,7 @@
 	<div class="top-bg">
 		
     	<img src="{% static 'img/splash-top.png' %}" class="splash-top" alt>
-		<div class="page-title zoomIn animated">Blog</div>
+		<div class="page-title zoomIn animated">OUR SERVICE</div>
 	</div>
 
 			<!-- page content -->
@@ -69,8 +69,8 @@
 									<div class="picture">
 										<div class="hover-effect"></div>
 										<div class="link-cont">
-											<a href="#" class="cws-slide-left fa fa-share-alt" onclick="shareContent(event)"></a>
-											<a href="#" class="cws-slide-right fa fa-heart heart-icon" data-blog-id="{{ blog.id }}" onclick="toggleHeart(event)"></a>
+											{% comment %} <a href="#" class="cws-slide-left fa fa-share-alt" onclick="shareContent(event)"></a>
+											<a href="#" class="cws-slide-right fa fa-heart heart-icon" data-blog-id="{{ blog.id }}" onclick="toggleHeart(event)"></a> {% endcomment %}
 										</div>
 										<img src="{{service.image.url}}" alt="">
 									</div>

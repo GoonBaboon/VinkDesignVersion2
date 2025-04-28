@@ -101,180 +101,53 @@
     </section>
     
 
-    <section class="text-section parallaxed">
-      <div class="parallax-image" data-parallax-left="0.5" data-parallax-top="0.3" data-parallax-scroll-speed="0.5">
-        <img src="{% static 'images/parallax-2.jpg' %}" alt="">
-      </div>
-      <div class="grid-row">
-        <div class="parallax-content-second">
-          <div class="grid-col-row clear">
-            <div class="grid-col grid-col-3">
-              <div class="counter-block">
-                <i class="fa fa-puzzle-piece"></i>
-                <div class="counter" data-count="675"></div>
-                <div class="counter-name">Creative Work</div>
-              </div>
-            </div>
-            <div class="grid-col grid-col-3">
-              <div class="counter-block">
-                <i class="fa fa-group"></i>
-                <div class="counter" data-count="945"></div>
-                <div class="counter-name">Satisfied Clients</div>
-              </div>							
-            </div>
-            <div class="grid-col grid-col-3">
-              <div class="counter-block">
-                <i class="fa fa-calendar"></i>
-                <div class="counter" data-count="756"></div>
-                <div class="counter-name">Working Days</div>
-              </div>
-            </div>
-            <div class="grid-col grid-col-3">
-              <div class="counter-block last">
-                <i class="fa fa-coffee"></i>
-                <div class="counter" data-count="859"></div>
-                <div class="counter-name">Cups Of Coffe</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    
+
     <section id="portfolio" class="portfolio padding-section">
       <div class="grid-row">
         <div class="portfolio-filter clear">
           <div class="title">
-            <a href="#" class="all-iso-item active" data-filter=".item">ALL</a>
+            {% comment %} <a href="#" class="all-iso-item" data-filter="*">ALL</a> {% endcomment %}
             <span class="main-title">PORTFOLIO</span>
             <span class="slash-icon">/</span>
-            <a href="#" data-filter=".photo">PHOTGRAPHY</a>
-            <a href="#" data-filter=".design">DESIGN</a>
-            <a href="#" data-filter=".video">VIDEO</a>
-            <a href="#" data-filter=".web">WEB</a>
-            <a href="#" data-filter=".music">MUSIC</a>
+    
+            {% for cat in categories %}
+              <a href="#" 
+                 data-filter=".{{ cat.name|slugify }}" 
+                 class="{% if cat.name|lower == 'interior' %}active{% endif %}">
+                {{ cat.name }}
+              </a>
+            {% endfor %}
           </div>
         </div>
       </div>
+    
       <div class="isotope">
-        <div class="item design photo video web">
+        {% for image in images %}
+        <div class="item {{ image.category.name|slugify }}" 
+             {% if image.category.name|lower != 'interior' %}style="display: none;"{% endif %}>
           <div class="portfolio-hover">
             <div class="portfolio-info">
-              <a href=""><div class="portfolio-title">Future timeline</div></a>
+              <a href="#"><div class="portfolio-title">{{ image.title }}</div></a>
               <div class="portfolio-divider"></div>
-              <div class="portfolio-description">Photography, Art</div>
+              <div class="portfolio-description">{{ image.description }}</div>
             </div>
           </div>
-          <img src="{% static 'images/isotop/iso1.jpg' %}" alt />
+          <img src="{{ image.image.url }}" alt="{{ image.title }}">
         </div>
-        <div class="item illust video">
-          <div class="portfolio-hover">
-            <div class="portfolio-info">
-              <a href=""><div class="portfolio-title">Sit Amet</div></a>
-              <div class="portfolio-divider"></div>
-              <div class="portfolio-description">Video, Art</div>
-            </div>
-          </div>
-          <img src="{% static 'images/isotop/iso3.jpg' %}" alt />
-        </div>
-        <div class="item design illust photo web">
-          <div class="portfolio-hover">
-            <div class="portfolio-info">
-              <a href=""><div class="portfolio-title">Sed Laoreete</div></a>
-              <div class="portfolio-divider"></div>
-              <div class="portfolio-description">Video, Photography</div>
-            </div>
-          </div>
-          <img src="{% static 'images/isotop/iso5.jpg' %}" alt />
-        </div>
-        <div class="item illust photo">
-          <div class="portfolio-hover">
-            <div class="portfolio-info">
-              <a href=""><div class="portfolio-title">Amet Interdum</div></a>
-              <div class="portfolio-divider"></div>
-              <div class="portfolio-description">Music, Art</div>
-            </div>
-          </div>
-          <img src="{% static 'images/isotop/iso8.jpg' %}" alt />
-        </div>
-        <div class="item design video web">
-          <div class="portfolio-hover">
-            <div class="portfolio-info">
-              <a href=""><div class="portfolio-title">Cras varius</div></a>
-              <div class="portfolio-divider"></div>
-              <div class="portfolio-description">Photography, Art</div>
-            </div>
-          </div>
-          <img src="{% static 'images/isotop/iso10.jpg' %}" alt />
-        </div>
-        <div class="item illust photo video">
-          <div class="portfolio-hover">
-            <div class="portfolio-info">
-              <a href=""><div class="portfolio-title">Maecenas Semper</div></a>
-              <div class="portfolio-divider"></div>
-              <div class="portfolio-description">Business, Art</div>
-            </div>
-          </div>
-          <img src="{% static 'images/isotop/iso2.jpg' %}" alt />
-        </div>
-        <div class="item illust video web music">
-          <div class="portfolio-hover">
-            <div class="portfolio-info">
-              <a href=""><div class="portfolio-title">Scelerisque Venen</div></a>
-              <div class="portfolio-divider"></div>
-              <div class="portfolio-description">Music, Art</div>
-            </div>
-          </div>
-          <img src="{% static 'images/isotop/iso6.jpg' %}" alt />
-        </div>
-        <div class="item design photo music">
-          <div class="portfolio-hover">
-            <div class="portfolio-info">
-              <a href=""><div class="portfolio-title">Libero Luctus</div></a>
-              <div class="portfolio-divider"></div>
-              <div class="portfolio-description">Music, Art</div>
-            </div>
-          </div>
-          <img src="{% static 'images/isotop/iso9.jpg' %}" alt />
-        </div>
-        <div class="item photo web music">
-          <div class="portfolio-hover">
-            <div class="portfolio-info">
-              <a href=""><div class="portfolio-title">Dlandit Cursus</div></a>
-              <div class="portfolio-divider"></div>
-              <div class="portfolio-description">Business, Art</div>
-            </div>
-          </div>
-          <img src="{% static 'images/isotop/iso4.jpg' %}" alt />
-        </div>
-        <div class="item photo video web music">
-          <div class="portfolio-hover">
-            <div class="portfolio-info">
-              <a href=""><div class="portfolio-title">Future timeline</div></a>
-              <div class="portfolio-divider"></div>
-              <div class="portfolio-description">Music, Photography</div>
-            </div>
-          </div>
-          <img src="{% static 'images/isotop/iso7.jpg' %}" alt />
-        </div>
-        <div class="item design video music">
-          <div class="portfolio-hover">
-            <div class="portfolio-info">
-              <a href=""><div class="portfolio-title">Sed Tempor</div></a>
-              <div class="portfolio-divider"></div>
-              <div class="portfolio-description">Business, Art</div>
-            </div>
-          </div>
-          <img src="{% static 'images/isotop/iso11.jpg' %}" alt />
-        </div>
+        {% endfor %}
       </div>
+    
       <div class="grid-row text-center" style="margin-top: 30px;">
         <div class="button-container">
-          <a href="{% url 'home:portfolio' %}" class="button-kunal">VIEW MORE</a>
+          <a href="{% url 'home:portfolio' %}" class="button-kunal">VIEW ALL</a>
         </div>
       </div>
-</section>
+    
+    </section>
+    
+    
+    
+    
       
       <hr />
     <section id="about" class="about-us padding-section">
@@ -303,6 +176,12 @@
           </div>
           
             {% endfor %}
+            
+        </div>
+      </div>
+      <div class="grid-row text-center" style="margin-top: 15px;margin-bottom: 20px;">
+        <div class="button-container">
+          <a href="{% url 'home:contact' %}" class="button-kunal">Let's Connect</a>
         </div>
       </div>
     </section>

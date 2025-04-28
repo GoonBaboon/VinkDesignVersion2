@@ -6356,8 +6356,12 @@ td.ui-datepicker-current-day {}
     max-width: 250px; /* Max width for larger screens */
     width: 100%; /* Ensure it’s responsive */
     box-sizing: border-box; /* Ensure padding is included in the width calculation */
+	transition: background-color 0.3s ease; /* Smooth transition for color change */
   }
-
+  
+  .button-kunal:hover {
+	background-color: var(--vinkgold); /* Color on hover */
+  }
   .button:hover {
     background-color: darken(var(--vinkblue), 10%); /* Darken the color on hover */
   }

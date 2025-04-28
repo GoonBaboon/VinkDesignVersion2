@@ -117,6 +117,22 @@ class Services(models.Model):
         return self.h1
 
         
+
+class PortfolioCategory(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True, unique=True)
+
+    def __str__(self):
+        return self.name        
+        
+class PortfolioImage(models.Model):
+    title = models.CharField(max_length=200, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to='portfolio_images/')
+    category = models.ForeignKey(PortfolioCategory, on_delete=models.CASCADE, related_name='images', blank=True, null=True)
+    link = models.URLField(max_length=1000,default='www.vinkdesign.com')
+    def __str__(self):
+        return str(self.title)
+        
     
 class Contact(models.Model):   
     name = models.CharField(max_length = 1156)

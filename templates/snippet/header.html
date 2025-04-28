@@ -20,12 +20,6 @@
                     <ul class="clear">
                         <li><a href="{% url "home:index" %}" class="active-link">Home</a></li>
                         <li><a href="{% url "home:about" %}">About</a></li>
-                        <li>
-                            <a href="{% url "home:portfolio" %}">Portfolio</a>
-                        </li>
-                        <li>
-                            <a href="{% url "blog:blog" %}">Blog</a>
-                        </li>
                         <li class="dropdown">
                             <a href="{% url "home:service_list" %}">Services <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
@@ -34,6 +28,13 @@
                                 {% endfor %}
                             </ul>
                         </li>
+                        <li>
+                            <a href="{% url "home:portfolio" %}">Portfolio</a>
+                        </li>
+                        <li>
+                            <a href="{% url "blog:blog" %}">Blogs</a>
+                        </li>
+                        
                         <li class="last"><a href="{% url "home:contact" %}">Contact</a></li>
                     </ul>
                 </nav>

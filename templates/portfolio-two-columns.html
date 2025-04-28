@@ -18,78 +18,36 @@
           <a href="#" class="all-iso-item active" data-filter=".item">ALL</a>
           <span class="main-title">PORTFOLIO</span>
           <span class="slash-icon">/</span>
-          <a href="#" data-filter=".photo">PHOTGRAPHY</a>
-          <a href="#" data-filter=".design">DESIGN</a>
-          <a href="#" data-filter=".video">VIDEO</a>
-          <a href="#" data-filter=".web">WEB</a>
-          <a href="#" data-filter=".music">MUSIC</a>
+          {% for cat in categories %}
+            <a href="#" data-filter=".{{ cat.name|slugify }}">{{ cat.name }}</a>
+          {% endfor %}
         </div>
       </div>
     </div>
     <div class="grid-row">
       <div class="grid-col-row">
         <div class="isotope portfolio-three-columns">
-          <div class="item photo">
-            <div class="portfolio-hover">
-              <div class="portfolio-info">
-                <a href=""><div class="portfolio-title">Future timeline</div></a>
-                <div class="portfolio-divider"></div>
-                <div class="portfolio-description">Business, Art</div>
+          {% for image in images %}
+          {% if image.category.name|lower == "website" and image.link %}
+            <div class="item {{ image.category.name|slugify }}">
+              <a href="{{ image.link }}" target="_blank">
+              <div class="portfolio-hover">
+                <div class="portfolio-info">
+                      <div class="portfolio-title">{{ image.title }}</div>
+                    </a>
+                  {% else %}
+                  <div class="item {{ image.category.name|slugify }}">
+                  <div class="portfolio-hover">
+                    <div class="portfolio-info">
+                    <div class="portfolio-title">{{ image.title }}</div>
+                  {% endif %}
+                  <div class="portfolio-divider"></div>
+                  <div class="portfolio-description">{{ image.description }}</div>
+                </div>
               </div>
+              <img src="{{ image.image.url }}" alt="{{ image.title }}">
             </div>
-            <img src="{% static 'images/portfolio_three/two-columns-1.jpg' %}" alt>
-          </div>
-          <div class="item illust ">
-            <div class="portfolio-hover">
-              <div class="portfolio-info">
-                <a href=""><div class="portfolio-title">Sit Amet</div></a>
-                <div class="portfolio-divider"></div>
-                <div class="portfolio-description">Video, Art</div>
-              </div>
-            </div>
-            <img src="{% static 'images/portfolio_three/two-columns-2.jpg' %}" alt>
-          </div>
-          <div class="item photo illust">
-            <div class="portfolio-hover">
-              <div class="portfolio-info">
-                <a href=""><div class="portfolio-title">Sed Laoreete</div></a>
-                <div class="portfolio-divider"></div>
-                <div class="portfolio-description">Video, Photography</div>
-              </div>
-            </div>
-            <img src="{% static 'images/portfolio_three/two-columns-3.jpg' %}" alt>
-          </div>
-          <div class="item design video music">
-            <div class="portfolio-hover">
-              <div class="portfolio-info">
-                <a href=""><div class="portfolio-title">Amet Interdum</div></a>
-                <div class="portfolio-divider"></div>
-                <div class="portfolio-description">Music, Art</div>
-              </div>
-            </div>
-            <img src="{% static 'images/portfolio_three/two-columns-4.jpg' %}" alt>
-          </div>
-          <div class="item illust music">
-            <div class="portfolio-hover">
-              <div class="portfolio-info">
-                <a href=""><div class="portfolio-title">Cras varius</div></a>
-                <div class="portfolio-divider"></div>
-                <div class="portfolio-description">Music, Art</div>
-              </div>
-            </div>
-            <img src="{% static 'images/portfolio_three/two-columns-5.jpg' %}" alt>
-          </div>
-          <div class="item design video web">
-            <div class="portfolio-hover">
-              <div class="portfolio-info">
-                <a href=""><div class="portfolio-title">Maecenas Semper</div></a>
-                <div class="portfolio-divider"></div>
-                <div class="portfolio-description">Business, Video</div>
-              </div>
-            </div>
-            <img src="{% static 'images/portfolio_three/two-columns-6.jpg' %}" alt>
-          </div>
-
+          {% endfor %}
         </div>
       </div>
     </div>

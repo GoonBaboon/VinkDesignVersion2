@@ -60,7 +60,7 @@
 					);
 				}
 			}
-			</script>
+		</script>
 			<script>
 				function toggleHeart(e) {
 					e.preventDefault();
@@ -175,6 +175,33 @@
 					});
 				</script>
 				
+			<script> document.addEventListener('DOMContentLoaded', function() {
+					const filterButtons = document.querySelectorAll('.portfolio-filter a');
+					const portfolioItems = document.querySelectorAll('.isotope .item');
+				
+					filterButtons.forEach(button => {
+					  button.addEventListener('click', function(e) {
+						e.preventDefault();
+						
+						// Update active class
+						filterButtons.forEach(btn => btn.classList.remove('active'));
+						this.classList.add('active');
+						
+						// Get filter value
+						const filterValue = this.getAttribute('data-filter');
+						
+						// Filter items
+						portfolioItems.forEach(item => {
+						  if (filterValue === '*' || item.classList.contains(filterValue.substring(1))) {
+							item.style.display = 'block';
+						  } else {
+							item.style.display = 'none';
+						  }
+						});
+					  });
+					});
+				  });
+			</script>
 							
 
 				
